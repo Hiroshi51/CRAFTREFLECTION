@@ -1,9 +1,19 @@
 <?php
-//sessiton start
-session_start();
-//loginCheck
-//assign query string
-$referenceUrl = $_REQUEST['page'].'.php';
+    //sessiton start
+    session_start();
+    //dbconnection&functions
+    require('le-db-connect.php');
+    //loginCheck
+    //assign query string
+    $referenceUrl = $_REQUEST['page'];
+    //When createpage
+    if($referenceUrl == "le-create-post"){
+    require('le-create.php');
+    }
+    //When checkpage
+    if($referenceUrl == "le-check-post"){
+    require('le-register.php');
+    }
 ?>
 <!doctype html>
 <html>
@@ -13,6 +23,6 @@ $referenceUrl = $_REQUEST['page'].'.php';
         <meta content='width=device-width, initial-scale=1.0' name='viewport' />
     </head>
     <body>
-       <?php require($referenceUrl); ?>
+       <?php require($referenceUrl.'.php'); ?>
     </body>    
-</html>    
+</html>

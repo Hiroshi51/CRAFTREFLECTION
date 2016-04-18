@@ -1,26 +1,3 @@
-<?php
-    //check whetehr user click Send
-    if(!empty($_POST)){
-        $requireItem = array("name","tube-link","category","ready");
-        $error = array(); 
-        foreach ($_POST as $key => $value){
-            if($value == ""){
-                $error[$key] = "blank";
-                $notCompleted = true;
-            }  
-        }
-        if($notCompleted != true){
-            $_SESSION['craft'] = $_POST;
-            header('location: le-admin-frame.php?page=le-check-post');
-            exit();
-        }
-    }
-    //when rewrite mode(RewiteButton has been clicked in the check page)
-    if($_REQUEST['action'] == 'rewrite'){
-        $_POST = $_SESSION['craft'];
-        $error['rewrite'] = true;
-    }
-?>
         <form action="" method="post">
             <dl>
                 <dt>
@@ -41,15 +18,13 @@
                     <label for="tube-link">YouTube埋め込みリンク</label>
                 </dt>
                 <dd>
-                    <textarea name="tube-link" id="tube-link" rows="20" cols="50"
-                     value="<?php echo htmlspecialchars($_POST['tube-link'],ENT_QUOTES,'UTF-8'); ?>"></textarea>
+                    <textarea name="tube_link" id="tube_link" rows="20" cols="50"><?php echo htmlspecialchars($_POST['tube-link'],ENT_QUOTES,'UTF-8'); ?></textarea>
                 </dd>   
                 <dt>
                     <label for="detail">ムービー説明</label>
                 </dt>
                 <dd>
-                    <textarea name="detail" id="detail" rows="20" cols="50"
-                     value="<?php echo htmlspecialchars($_POST['detail'],ENT_QUOTES,'UTF-8'); ?>"></textarea>
+                    <textarea name="detail" id="detail" rows="20" cols="50"><?php echo htmlspecialchars($_POST['detail'],ENT_QUOTES,'UTF-8'); ?></textarea>
                 </dd>  
                 <dt>
                     ムービーカテゴリー
@@ -57,14 +32,14 @@
                 <dd>
                     <p>
                         <input name="category" type="radio" id="category01" value="PV" 
-                         checked="<?php if(htmlspecialchars($_POST['category'],ENT_QUOTES,'UTF-8') == "PV"){
-                            echo "checked";} ?>" />
+                         <?php if(htmlspecialchars($_POST['category'],ENT_QUOTES,'UTF-8') == "PV"){
+                            echo 'checked="checked"';} ?> />
                         <label for="category01">PV</label>
                     </p>   
                     <p>
                         <input name="category" type="radio" id="category02" value="MV" 
-                         checked="<?php if(htmlspecialchars($_POST['category'],ENT_QUOTES,'UTF-8') == "MV"){
-                            echo "checked";} ?>" />
+                         <?php if(htmlspecialchars($_POST['category'],ENT_QUOTES,'UTF-8') == "MV"){
+                            echo 'checked="checked"';} ?> />
                         <label for="category02">MV</label>
                     </p>    
                 </dd>
@@ -74,14 +49,14 @@
                 <dd>
                     <p>
                         <input name="ready" type="radio" id="ready-yes" value="yes" 
-                         checked="<?php if(htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == "yes"
-                                   || htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == ""){echo "checked";} ?>" />
+                         <?php if(htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == "yes"
+                                   || htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == ""){echo 'checked="checked"';} ?> />
                         <label for="ready-yes">投稿する</label>
                     </p>   
                     <p>
                         <input name="ready" type="radio" id="ready-no" value="no" 
-                         checked="<?php if(htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == "no"){
-                            echo "checked";} ?>" />
+                         <?php if(htmlspecialchars($_POST['ready'],ENT_QUOTES,'UTF-8') == "no"){
+                            echo 'checked="checked"';} ?> />
                         <label for="ready-no">編集中へ保存</label>
                     </p>    
                 </dd>   
