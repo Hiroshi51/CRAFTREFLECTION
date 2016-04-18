@@ -7,15 +7,29 @@
         <title>映像配信｜CRAFT REFLECTION</title>
         <link rel="stylesheet" type="text/css" href="reset.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style-temp.css">
         <link rel="stylesheet" media="(max-width: 480px)" href="smart.css">
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="js/adjust.js"></script>
-        <script src="js/textInOut.js"></script>
-        <script>
-            $(document).ready(function(){
-                $('h3.movieTitle').textInOut();
-            });    
-        </script>
+
+        <script> 
+       
+            //Resposive
+            var scriptTag = document.createElement("script");
+        
+            $(function(){
+                //window width default
+                var egwidth = $(window).width();
+                if(egwidth <= 640){
+                    scriptTag.src = "js/textInOut-sp.js";
+                    document.getElementsByTagName("head")[0].appendChild(scriptTag);
+                }else if(egwidth > 640){
+                    scriptTag.src = "js/textInOut-pc.js";
+                    document.getElementsByTagName("head")[0].appendChild(scriptTag);
+                }
+            });
+           
+       </script>
     </head>
     <body>
         <header role="banner">
@@ -122,18 +136,8 @@
         </main>
         <footer>
             <div id="footerWrapper">
-            
-            
-            
             </div>
-        
-        
-        
-        
-        
-        
         </footer>
-
-
     </body>
+
 </html>

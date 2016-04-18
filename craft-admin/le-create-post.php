@@ -11,19 +11,11 @@
         }
         if($notCompleted != true){
             $_SESSION['craft'] = $_POST;
-            header('location: le-check-post.php');
+            header('location: le-admin-frame.php?page=le-check-post');
             exit();
         }
     }
 ?>
-<!doctype html>
-<html>
-    <head>
-        <meta charset='utf-8' />
-        <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
-        <meta content='width=device-width, initial-scale=1.0' name='viewport' />
-    </head>
-    <body>
         <form action="" method="post">
             <dl>
                 <dt>
@@ -80,5 +72,3 @@
             </dl>
             <input type="submit" value="更新"/>
         </form>  
-    </body>    
-</html>    

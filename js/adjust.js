@@ -40,7 +40,7 @@ $(document).ready(function(){
     });
     $(window).on('resize',function(){
         adjust();
-
+        $movieContents.css({height:"auto"});
     });
     
   
