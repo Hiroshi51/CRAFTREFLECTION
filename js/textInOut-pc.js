@@ -11,12 +11,22 @@
             } 
          }).mouseleave(function(){  
                 var $target = $(this).siblings('.movieItemWrapper').children('.movieText');
-                $target.siblings('p.movieDetail').fadeOut(400);
-                $target.animate({top:"100%"},400);                            
+                $target.siblings('p.movieDetail').fadeOut(400,function(){
+                  //empty animation queue
+                    $(this).queue([]);     
+                  //stop animation
+                    $(this).stop();  
+                });
+                $target.animate({top:"100%"},400,function(){
+                  //empty animation queue
+                    $(this).queue([]);     
+                  //stop animation
+                    $(this).stop();   
+                });                        
         });
         
         function changeflag($this){
-            var done = setTimeout(function(){$this.flag = 0;},600);    
+            var done = setTimeout(function(){$this.flag = 0;},400);    
         }
     }
      $('h3.movieTitle').textInOut();

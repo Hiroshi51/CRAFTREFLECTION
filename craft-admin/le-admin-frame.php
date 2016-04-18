@@ -1,5 +1,6 @@
 <?php
 //sessiton start
+session_start();
 //loginCheck
 //assign query string
 $referenceUrl = $_REQUEST['page'].'.php';
