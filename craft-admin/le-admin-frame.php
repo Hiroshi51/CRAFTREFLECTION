@@ -4,16 +4,30 @@
     //dbconnection&functions
     require('le-db-connect.php');
     //loginCheck
+
+
+    require ('functions.php');
     //assign query string
     $referenceUrl = $_REQUEST['page'];
-    //When createpage
-    if($referenceUrl == "le-create-post"){
-    require('le-create.php');
-    }
-    //When checkpage
-    if($referenceUrl == "le-check-post"){
-    require('le-register.php');
-    }
+
+    switch($referenceUrl)
+    {
+        case "le-create-post":
+        require('parts/le-create.php');
+        break;
+
+        case "le-check-post":
+        require('parts/le-register.php');
+        break;
+
+        case "le-list-post":
+        require('parts/le-list.php');
+        break;
+
+        case "le-delete-post":
+        require('parts/le-delete.php');
+        break;
+     }   
 ?>
 <!doctype html>
 <html>
