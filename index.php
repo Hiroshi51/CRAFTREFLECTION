@@ -1,9 +1,15 @@
 <?php
 require('craft-admin/le-db-connect.php');
-$prepare = $dbh->prepare('SELECT * FROM craft_movie WHERE ready=? ORDER BY id');
-$prepare->bindValue(1,'yes',PDO::PARAM_STR);
-$prepare->execute();
-
+try
+{
+    $prepare = $dbh->prepare('SELECT * FROM craft_movie WHERE ready=? ORDER BY id');
+    $prepare->bindValue(1,'yes',PDO::PARAM_STR);
+    $prepare->execute();
+}
+catch(PDOException $e)
+{
+    $error = $e->getMessage();   
+}
 ?>
 <!doctype html>
 <html>
