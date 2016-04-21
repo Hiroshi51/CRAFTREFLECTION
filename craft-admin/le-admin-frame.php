@@ -20,6 +20,10 @@
         require('parts/le-register.php');
         break;
 
+        case "le-checkUp-post":
+        require('parts/le-do-update.php');
+        break;
+
         case "le-list-post":
         require('parts/le-list.php');
         break;
@@ -27,9 +31,11 @@
         case "le-delete-post":
         require('parts/le-delete.php');
         break;
+
+        case "le-update-post":
+        require('parts/le-update.php');
+        break;
      }   
-     //Let the broweser know that HTML afterward is written by URF-8
-     header('Content-Type: text/html; charset=utf-8');
 ?>
 <!doctype html>
 <html>

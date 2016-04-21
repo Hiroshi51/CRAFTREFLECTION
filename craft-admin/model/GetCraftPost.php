@@ -2,20 +2,29 @@
 
 class GetCraftPost
 {
-    private $db;
-    private $sql;
-    private $recordSet;
+    private $prepare;
     
     //Set SQL syntax
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        
     }
-    public function getPostById($id)
+    public function getPostById($dbh,$id)
     {
-        $this->sql = sprintf('SELECT * FROM craft_movie WHERE id=%d',$id);
-        $this->recordSet = mysqli_query($this->db,$this->sql) or die(mysqli_error($this->db));
-        return $this->recordSet;
+        try
+        {
+            $this->prepare = $dbh->prepare('SELECT * FROM craft_movie WHERE id=?');
+            $this->prepare->bindValue(1,(int)$id,PDO::PARAM_INT);
+            $this->prepare->execute();
+
+        }
+        catch(PDOException $e)
+        {
+            $error = $e->getMessage();   
+            
+        }
+
+        return $this->prepare;
     }
 }
 

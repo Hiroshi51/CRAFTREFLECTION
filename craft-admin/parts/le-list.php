@@ -1,6 +1,6 @@
 <?php
    //proccess for pagination etc
    include ('model/ShowList.php');
-   $showList = new ShowList($db);
-   $listRecord = $showList->showAllListAction();
+   $showList = new ShowList();
+   $listRecord = $showList->showAllListAction($dbh);
 ?>

@@ -2,24 +2,32 @@
 
 class DeletePost
 {
-    private $db;
-    private $sql;
-    private $recordSet;
-    
+
+    private $prepare;
+       
     //Set SQL syntax
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+       
         
     }
-
     //Show all list 
-    public function deletePostById($id)
-    {    
-        
-        $this->sql = sprintf('DELETE FROM craft_movie WHERE id =%d',$id);
-        $ret = mysqli_query($this->db,$this->sql) or die(mysqli_error($this->db));
-        return $ret;
+    public function deletePostById($dbh,$id)
+    {   
+           
+        try
+        {
+            $this->prepare = $dbh->prepare('DELETE FROM craft_movie WHERE id=?');
+            $this->prepare->bindValue(1,(int)$id,PDO::PARAM_INT);
+            $this->prepare->execute();
+
+        }
+        catch(PDOException $e)
+        {
+            $error = $e->getMessage();   
+            echo $error;
+        }
+        return true;
     }
 }
 
