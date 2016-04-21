@@ -1,7 +1,9 @@
 <?php
 require('craft-admin/le-db-connect.php');
-$basicSql = sprintf('SELECT * FROM craft_movie WHERE ready="%s" ORDER BY id','yes');
-$recordSet = mysqli_query($db,$basicSql);
+$prepare = $dbh->prepare('SELECT * FROM craft_movie WHERE ready=? ORDER BY id');
+$prepare->bindValue(1,'yes',PDO::PARAM_STR);
+$prepare->execute();
+
 ?>
 <!doctype html>
 <html>
@@ -67,7 +69,7 @@ $recordSet = mysqli_query($db,$basicSql);
                 <div id="mainWrapper">
                     <h2>Movie Archive</h2>            
                     <div id="movieWarapper" class="clearfix" >
-                        <?php while($data = mysqli_fetch_assoc($recordSet)) :?>
+                        <?php while($data = $prepare->fetch(PDO::FETCH_ASSOC)) :?>
                         
                         <div class="movieContents">  
                             <div class="movieItemWrapper">
