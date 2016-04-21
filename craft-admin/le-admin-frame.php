@@ -28,6 +28,8 @@
         require('parts/le-delete.php');
         break;
      }   
+     //Let the broweser know that HTML afterward is written by URF-8
+     header('Content-Type: text/html; charset=utf-8');
 ?>
 <!doctype html>
 <html>
