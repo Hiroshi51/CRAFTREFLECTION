@@ -5,27 +5,24 @@
             var $target = $(this).siblings('.movieItemWrapper').children('.movieText');   
             if(this.flag != 1){
                 this.flag = 1;
-                $target.animate({top:"0px"},400);
-                $target.siblings('p.movieDetail').fadeIn(400);
+                $target.stop().animate({top:"0px"},300,function(){
+                $target.siblings('p.movieDetail').stop().fadeIn(200);
+
+                });
+               
             }else{
                
-                $target.siblings('p.movieDetail').fadeOut(400,function(){
-                  //empty animation queue
-                    $(this).queue([]);     
-                  //stop animation
-                    $(this).stop();  
+                $target.siblings('p.movieDetail').stop().fadeOut(200,function(){
+                $target.stop().animate({top:"100%"},300);  
+               
+
+
                 });
-                $target.animate({top:"100%"},400,function(){
-                  //empty animation queue
-                    $(this).queue([]);     
-                  //stop animation
-                    $(this).stop();  
-                });  
-                changeflag(this);  
+         changeflag(this);  
             } 
         });
         function changeflag($this){
-            var done = setTimeout(function(){$this.flag = 0;},400);    
+            var done = setTimeout(function(){$this.flag = 0;},10);    
         }
     }
 

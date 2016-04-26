@@ -1,6 +1,14 @@
 <?php
     //sessiton start
     session_start();
+
+    //redirect to the loginPage if the user hasn't logged in.
+    if(empty($_SESSION['nice_name'])){
+        header('Location: index.php');
+        exit();
+    }
+
+    
     //dbconnection&functions
     require('le-db-connect.php');
     //loginCheck
