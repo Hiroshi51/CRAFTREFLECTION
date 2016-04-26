@@ -2,6 +2,7 @@
 class PageProp
 {
     private $siteDbh;
+    private $prepare;
     private $error;
     private $data;
 
@@ -32,15 +33,15 @@ class PageProp
     {    
 		try
 		{
-		    $this->$prepare = $this->$siteDbh->prepare('SELECT * FROM craft_site');
-		    $this->$prepare->execute();
-		    $this->$data = $this->$prepare->fetch(PDO::FETCH_ASSOC)); 
+		    $this->prepare = $this->$siteDbh->prepare('SELECT * FROM craft_site');
+		    $this->prepare->execute();
+		    $this->data = $this->prepare->fetch(PDO::FETCH_ASSOC)); 
 		}
 		catch(PDOException $e)
 		{
-		    $this->$error = $e->getMessage(); 
+		    $this->error = $e->getMessage(); 
         }
-        return $this->$data['site_url'];
+        return $this->data['site_url'];
     }
 }
 ?>

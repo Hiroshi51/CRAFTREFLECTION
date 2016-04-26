@@ -1,7 +1,8 @@
 <?php 
+   require('../le-db-connect.php');
    $registerItem = $_POST;
-   $confirmRegister = new confirmRegister();
-   $confirmRegister->registerMember();
+   $confirmRegister = new ConfirmRegister();
+   $confirmRegister->registerMember($dbh,$registerItem);
    heaer('Location: member-registered.php');
    exit();
 ?>
