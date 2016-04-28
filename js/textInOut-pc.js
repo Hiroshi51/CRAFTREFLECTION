@@ -17,5 +17,5 @@
         
        
     }
-     $('h3.movieTitle').textInOut();
+   
 }( jQuery ));
