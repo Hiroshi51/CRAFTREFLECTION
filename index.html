@@ -9,9 +9,14 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="style-temp.css">
         <link rel="stylesheet" media="(max-width: 768px)" href="smart.css">
+        <link rel="stylesheet" type="text/css" href="tube-css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="tube-css/style.css">
+      
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="js/adjust.js"></script>
-
+        <script src="js/device.min.js"></script> <!--OPTIONAL JQUERY PLUGIN-->
+        <script src="js/jquery.mb.YTPlayer.js"></script>
+        <script src="js/custom.js"></script>
         <script> 
        
             //Resposive
@@ -33,33 +38,45 @@
     </head>
     <body>
         <header role="banner">
-            <div id="topWhite">
-                <h1>        </h1>
-            </div>
-            <div id="headerWrapper">
-                <div id="inngerHeader">
-                    <p id="topLogo"><img src="img/common/topLogo.png"/></p>
-                    <p id="topfacebook"><img src="img/common/facebookIcon.jpg"/></p>
-                    <p id="topyoutube"><img src="img/common/youtubeIcon.jpg"/></p>   
-                </div>  
-            </div>
-            <nav>
-                <div id="navWrapper">
-                    <ul id="globalNavi">
-                        <a><li>ABOUT</li></a>
-                        <a><li class="middleMenu">GREETING</li></a>
-                        <a><li>CONTACT</li></a>
-                    </ul>          
+             <div id="sliderWrapper">
+                     <section class="big-background">
+                    <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?time_continue=172&v=yoTJTTTzHwM',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:1}"></a>
+
+                   
+                    <div id="headerWrapper">
+                        <div id="inngerHeader">
+                            <p id="topLogo"><img src="img/common/topLogo.png"/></p>
+                            <p id="topfacebook"><img src="img/common/facebookIcon.jpg"/></p>
+                            <p id="topyoutube"><img src="img/common/youtubeIcon.jpg"/></p>   
+                        </div>  
+                    </div>
+                    <nav>
+                        <div id="navWrapper">
+                            <ul id="globalNavi">
+                                <a><li>ABOUT</li></a>
+                                <a><li class="middleMenu">GREETING</li></a>
+                                <a><li>CONTACT</li></a>
+                            </ul>          
+                        </div>
+                    </nav>
+                            <div class="pattern"></div> 
+                   
+                    </section>
                 </div>
-            </nav>
         </header>
-        <div id="sliderWrapper">
-            <div id="slider">  
-            </div>
-        </div>
         
+   
+          
+               
+
+
+      
+
+
         <main role="main">
-            <section>
+           
+    <section class="about-section">
+
                 <div id="mainWrapper">
                     <h2>Movie Archive</h2>            
                     <div id="movieWarapper" class="clearfix" >
